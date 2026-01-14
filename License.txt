@@ -1,0 +1,13 @@
+Vivodesk License
+
+Copyright (c) 2026 Diegojpv
+
+Permission is hereby granted to any person to use, modify, and distribute this software
+for personal, educational, or community purposes, provided that the following conditions are met:
+
+1. The software may not be sold or used for commercial purposes without prior written
+   agreement with the author.
+2. Modifications and redistributions must include attribution to the original author.
+3. The software is provided "as is", without warranty of any kind.
+
+For commercial licensing, please contact the author to agree on terms.
