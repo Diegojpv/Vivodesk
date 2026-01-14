@@ -1,0 +1,19 @@
+/* ============================ Font Definitions ============================ */
+
+@font-face {
+    font-family: Stentiga;
+    src: url(../fonts/Stentiga.otf);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: OpenSans;
+    src: url(../fonts/Opensans/OpenSans-VariableFont_wdth\,wght.ttf);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Bebasneue;
+    src: url(../fonts/Bebasneue/BebasNeue-Regular.ttf);
+    font-weight: 100;
+}
