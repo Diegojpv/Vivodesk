@@ -109,23 +109,30 @@ boton.addEventListener('mouseenter', animationActive);
 
 const workdeskLink = document.getElementById('workdesk-link');
 const userLink = document.getElementById('user-link');
+const username = document.querySelector('.user p').textContent.trim();
 
 // Function to navigate to the work desk page with the username as a query parameter
-function goToWorkdesk(event) {
-  // Recover the username from the text that contains it.
-  const username = document.querySelector('.user p').textContent.trim();
+workdeskLink.addEventListener('click', (event) => {
   // If the username is empty, prevent navigation and alert the user.
   if (username.length === 0) {
     event.preventDefault();
     alert('Please log in to access the work desk.');
   } else {
     // Navigate to the work desk page with the username as a query parameter.
-    window.location.href = `workdesk.php?user=${username}`;
+    window.location.href = `workdesk/welcome.php`;
   }
-}
-// Add event listeners to the links to trigger the navigation function.
-workdeskLink.addEventListener('click', goToWorkdesk);
-userLink.addEventListener('click', goToWorkdesk);
+});
+
+userLink.addEventListener('click', (event) => {
+  // If the username is empty, prevent navigation and alert the user.
+  if (username.length === 0) {
+    event.preventDefault();
+    alert('Please log in to access your profile.');
+  } else {
+    // Navigate to the profile page.
+    window.location.href = `workdesk/profile.php`;
+  }
+});
 
 // ---------------------- Logout logic -----------------------
 const logOutLink = document.querySelector('.log-out');

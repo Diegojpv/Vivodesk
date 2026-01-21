@@ -12,21 +12,36 @@ The goal is to learn about servers, databases, and web development while providi
 
 - **public/**
   - `index.php` → Main page (home page).
-  - `workdesk.php` → Welcome page for the dashboard.
+  - **workdesk/** → Folder containing each of the php files for the workdesk sections.
+    - `clients.php` →
+    - `navbar.php`
+    - `profile.php`
+    - `welcome.php` 
   - **assets/**
     - **css/**
+      - `clients.css`
       - `index.css` → Styles for the home page.
       - `fonts.css` → Font imports.
+      - `navbar.css`
+      - `profile.css`
+      - `welcome.css`
     - **js/**
       - `index.js` → Logic for visual effects and home page buttons.
+      -`clients.js`
+      -`form.js` 
+      -`profile.js`
     - **fonts/** → Fonts used in the project.
     - **images/** → Graphic resources for the home page.
 
 - **src/**
+  - **clients/**
+    - `addClient.php`
   - `db.php` → Database connection using PDO (MySQL).
   - `logout.php` → Logout logic.
   - `verification.php` → Access verification for the dashboard (only the account owner can enter).
   - `users.php` → Logic for login and account creation.
+  - `delete.php`
+  - `updateUser.php`
 
 ---
 
@@ -39,20 +54,31 @@ The goal is to learn about servers, databases, and web development while providi
 
 ---
 
-## 🚀 Current Status
+## 🚀 Current status
 
-- Account system implemented (registration, login, access verification, logout).  
-- Home page with styles, fonts, and basic visual effects.
+- Account system implemented (registration, login, access verification, logout).
+- Home page with basic styles, fonts, and visual effects.
+- Functional dashboard for the work desktop
+- User update system implemented (change name, delete user, assign roles and data)
+- Customer system implemented (add customers, assign information to each customer)
 
 ---
 
-## 🔮 Upcoming Updates
+## 🔮 Upcoming updates
 
-- Complete dashboard.  
-- Client management.  
 - Inventory system.  
 - Service assignment.  
-- Security and scalability improvements.
+- Improvements in security and scalability.
+-  Improvements in the visual section and better responsive design
+- Modification and deletion of customer data for better management
+- Notifications
+
+---
+
+## 🔄 Versions 
+
+- Vivodesk V0.4 (Current)
+- Vivodesk V0.1
 
 ---
 

@@ -1,0 +1,282 @@
+/*========================= Navbar styles =========================*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    width: 100dvw;
+    height: 100dvh;
+    container-type: inline-size;
+}
+
+main{
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100dvh;
+    font-family: OpenSans;
+    scroll-behavior: smooth;
+}
+
+.wd-navbar {
+    flex-shrink: 0;
+    width: 18%;
+    height: 100dvh;
+    background-color: #292b2be0;
+    display: flex;
+    flex-direction: column;
+    font-family: OpenSans;
+    color: #ffffff;
+    position: relative;
+}
+
+/*-------------------- Navbar header styles --------------------*/
+
+.wd-navbar__header{
+    container-type: inline-size;
+    text-align: center;
+    width: 100%;
+    padding: 0.25cqi 0;
+    border-bottom: 0.2cqi solid #ffffff;
+    font-size: 0.8cqi;
+    font-family: Stentiga, OpenSans;
+    letter-spacing: 0.2cqi;
+}
+
+#wd-navbar--checkbox{
+    display: none;
+}
+
+/* From Uiverse.io by vk-uiux */ 
+.wd-navbar__toggle {
+  position: relative;
+  width: clamp(35px, 6cqi, 50px);
+  cursor: pointer;
+  display: none;
+  z-index: 110;
+}
+
+.bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 4px;
+  border-radius: calc(4px / 2);
+  background: #ffffff;
+  color: inherit;
+  opacity: 1;
+  transition: none 0.35s cubic-bezier(.5,-0.35,.35,1.5) 0s;
+}
+
+/***** Spin Animation *****/
+
+.bar--top {
+  bottom: calc(50% + 11px + 4px/ 2);
+  transition-property: bottom,transform;
+  transition-delay: calc(0s + 0.35s),0s;
+}
+
+.bar--middle {
+  top: calc(50% - 4px/ 2);
+  transition-property: opacity;
+  transition-delay: calc(0s + 0.35s);
+}
+
+.bar--bottom {
+  top: calc(50% + 11px + 4px/ 2);
+  transition-property: top,transform;
+  transition-delay: calc(0s + 0.35s),0s;
+}
+
+#wd-navbar--checkbox:checked + .wd-navbar__toggle .bar--top {
+  bottom: calc(50% - 4px/ 2);
+  transform: rotate(135deg);
+  transition-delay: 0s,calc(0s + 0.35s);
+}
+
+#wd-navbar--checkbox:checked + .wd-navbar__toggle .bar--middle {
+  opacity: 0;
+  transition-duration: 0s;
+  transition-delay: calc(0s + 0.35s);
+}
+
+#wd-navbar--checkbox:checked + .wd-navbar__toggle .bar--bottom {
+  top: calc(50% - 4px/ 2);
+  transform: rotate(225deg);
+  transition-delay: 0s,calc(0s + 0.35s);
+}
+/*------------------ Navbar wrapper styles --------------------*/
+
+.wd-navbar__wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.wd-navbar__user-info{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    container-type: inline-size;
+    gap: 0.7cqi;
+    padding: 1cqi 0 0.5cqi 0;
+    font-size: 1.2cqi;
+}
+
+.wd-navbar__user-info img{
+    width: 31cqi;
+}
+
+/*------------------ Navbar list styles --------------------*/
+
+.wd-navbar__list {
+    margin: auto;
+    width: min-content;
+    display: flex;
+    flex-direction: column;
+    gap: 1.4cqi;
+    list-style: none;
+    padding: 1cqi;
+}
+
+.wd-navbar__link {
+    font-size: 1.4cqi;
+    display: flex;
+    padding: 0.6cqi 0.8cqi 0.6cqi 0.4cqi;
+    cursor: pointer;
+    transition: transform 0.4s ease;
+    position: relative;
+    align-items: center;
+    border-radius: 0.5cqi;
+}
+
+a{
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    gap: 0.6cqi;
+    align-items: center;
+}
+
+
+.wd-navbar__link:hover {
+    background-color: #ffffff;
+    transform: scale(1.25);
+}
+
+.wd-navbar__link:hover::after{
+    content: '';
+    width: 0.2cqi;
+    height: 70%;
+    top: 50;
+    position: absolute;
+    background-color: #ffffff;
+    transform: translateX(-520%);
+    border-radius: 0.3cqi;
+}
+
+.wd-navbar__link:hover > *{
+    opacity: 0.75;
+    filter: invert(100%);
+}
+
+.wd-navbar__link img{
+    width: 2.1cqi;
+    height: 2.1cqi;
+}
+/*-------------------- Navbar mobile styles ----------------------------*/
+
+@media (max-width: 964px) {
+    body{
+        flex-direction: column;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    main{
+        width: 100dvw;
+    }
+    .wd-navbar {
+        width: 100dvw;
+        height: 50px;
+        padding-block: 8px;
+        flex-direction: row;
+        align-items: center;
+        position: sticky;
+    }
+
+    .wd-navbar__header{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        height: min-content;
+        border: none;
+        font-size: clamp(12px, 4cqi, 25px);
+        margin-inline:  2.7cqi;
+    }
+
+    .wd-navbar__toggle{
+        display: block;
+    }
+
+    .wd-navbar__user-info{
+        font-size: min(45px, 6cqi);
+    }
+
+    .wd-navbar__user-info img{
+        width: min(84px, 26cqi);
+    }
+
+    .wd-navbar__wrapper{
+        height: 100dvh;
+        top: 0;
+        right: 0;
+        transform: translateX(100%);
+        position: fixed;
+        z-index: 100;
+        background: #292b2be0;
+        transition: transform 0.5s ease-in-out;
+        overflow-y: auto;
+        backdrop-filter: blur(8px);
+    }
+
+    .wd-navbar__list{
+        margin: auto;
+    }
+    .wd-navbar__link{
+        font-size: min(55px, 10cqi);
+        padding: 2cqi 1.8cqi 2cqi 1.5cqi;
+    }
+
+    .wd-navbar__link img{
+        width: min(55px, 10cqi);
+        height: min(55px, 10cqi);
+    }
+
+    .wd-navbar__link:hover {
+    background-color: #ffffff;
+    border-radius: 0.5cqi;
+    transform: scale(1.1);
+}
+
+    .wd-navbar__link:hover::after{
+        width: 1cqi;
+        transform: translateX(-450%);
+    }
+
+
+    .wd-navbar__header:has(#wd-navbar--checkbox:checked) + .wd-navbar__wrapper{
+        transform: translateX(0);
+    }
+}
+
+

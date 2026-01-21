@@ -33,12 +33,20 @@ try {
             $query = $connection->prepare("SELECT * FROM users WHERE username = :username");
             $result = $query->execute(['username' => $username]);
             $userFound = $query->fetch(PDO::FETCH_ASSOC);
+            // We prepare the statement to retrieve role and business information
+            $stmt = $connection->prepare("SELECT Role, Business FROM users WHERE UserID = :userID");
 
             // If the user exists, we verify the hashed password, assign the value to the user variables, and print the result of the process.  
             if ($userFound) {
                 if (password_verify($password, $userFound['Password'])) {
+                    // We assign session variables for user identification and personalization.
                     $_SESSION['user_id'] = $userFound['UserID'];
                     $_SESSION['username'] = $userFound['Username'];
+                    // We execute the statement to get role and business information
+                    $stmt->execute(['userID' => $userFound['UserID']]);
+                    $roleBusiness = $stmt->fetch(PDO::FETCH_ASSOC);
+                    $_SESSION['role'] = $roleBusiness['Role'];
+                    $_SESSION['business'] = $roleBusiness['Business'];
                     echo "success";
                 } else {
                     echo "incorrect-pass";

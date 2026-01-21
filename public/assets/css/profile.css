@@ -1,0 +1,32 @@
+/*============================= Profile Section Styles =============================*/
+
+.profile-card{
+    width: 80%;
+    margin: 2cqi auto;
+    padding: 2cqi;
+    background-color: #d9d9d9;
+    border-radius: 3cqi;
+    box-shadow: 0.7cqi 0.7cqi 0px #737373;
+}
+
+.profile-card__content{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 2cqi;
+}
+
+.profile-card__img{
+    flex-shrink: 0;
+}
+
+.profile-card__info{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1cqi;
+}
+

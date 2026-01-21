@@ -164,7 +164,7 @@ session_start();
                 </a>
 
                 <a class="footer__linkedin-link">
-                    <img src="assets/img/linkedin-icon.png" alt="">
+                    <img src="assets/img/linkedin-icon.webp" alt="">
                 </a>
             </div>
 
