@@ -13,35 +13,35 @@ The goal is to learn about servers, databases, and web development while providi
 - **public/**
   - `index.php` → Main page (home page).
   - **workdesk/** → Folder containing each of the php files for the workdesk sections.
-    - `clients.php` →
-    - `navbar.php`
-    - `profile.php`
-    - `welcome.php` 
+    - `clients.php` → File with the structure of the customer department
+    - `navbar.php` → Navigation structure on the workdesk
+    - `profile.php` → Structure of the section to modify the user
+    - `welcome.php` → Welcome page to the workdesk
   - **assets/**
     - **css/**
-      - `clients.css`
+      - `clients.css` → Styles for the customer section 
       - `index.css` → Styles for the home page.
       - `fonts.css` → Font imports.
-      - `navbar.css`
-      - `profile.css`
-      - `welcome.css`
+      - `navbar.css` → Styles for navigating in the workdesk
+      - `profile.css` → Styles for user personalization page
+      - `welcome.css` → Styles for the welcome page
     - **js/**
       - `index.js` → Logic for visual effects and home page buttons.
-      -`clients.js`
-      -`form.js` 
-      -`profile.js`
+      -`clients.js` → Logic for customer management and section features
+      -`form.js` → Logic for user registration forms
+      -`profile.js` → Logic for updating user data
     - **fonts/** → Fonts used in the project.
     - **images/** → Graphic resources for the home page.
 
 - **src/**
   - **clients/**
-    - `addClient.php`
+    - `addClient.php` → Add clients to the database 
   - `db.php` → Database connection using PDO (MySQL).
   - `logout.php` → Logout logic.
-  - `verification.php` → Access verification for the dashboard (only the account owner can enter).
+  - `verification.php` → Access verification for the dashboard (This file has been modified to improve security.).
   - `users.php` → Logic for login and account creation.
-  - `delete.php`
-  - `updateUser.php`
+  - `delete.php` → Contains the deletion of user data from the database.
+  - `updateUser.php` → Change the user data in the database with the new entries in the profile section.
 
 ---
 
