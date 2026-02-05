@@ -4,7 +4,7 @@
 .wd-main__header{
     width: 100%;
     height: max(45px, 4cqi);
-    background-color: gray;
+    background-color: #808080;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -24,7 +24,15 @@
     object-fit: contain;
 }
 
-#toggle-form{
+.wd-btn--add-client:hover{
+    transform: scale(1.08);
+}
+
+.wd-btn--add-client:active{
+    transform: scale(1);
+}
+
+input[type="checkbox"]{
   display: none;
 }
 
@@ -38,6 +46,10 @@
   border: none;
   padding: 0.5cqi;
   font-size: 1cqi;
+  outline: none;
+  font-family: inherit;
+  font-weight: 600;
+  word-spacing: 0.1cqi;
 }
 /*------------------------ Add client form styles ------------------------*/
 #toggle-form:checked ~ .wd-form--container{
@@ -223,8 +235,9 @@
   display: flex;
   flex-direction: column;
   justify-content: safe center;
+  align-items: center;
   text-align: center;
-  gap: 0.2cqi;
+  gap: 0.5cqi;
   overflow: auto;
   scrollbar-width: thin;
   scrollbar-color: #808080 transparent;
@@ -233,38 +246,54 @@
 
 .details-label{
   text-align: center;
-  font-size: 1.5cqi;
+  font-size: 1.2cqi;
   font-weight: 600;
   cursor: pointer;
-  color: #1212b888;
+  color: #ffffff;
+  background-color: #4d94ff;
+  box-shadow: 0 .3cqi 0 #3366cc;
+  border-radius: 0.5cqi;
+  padding: 0.2cqi 0.4cqi;
 }
 
 .details-label:hover{
-  color: #0f0fb8c2;
-  text-decoration: underline;
+  background-color: #3380ff;
 }
 
-.client-card__address, .client-card__description, small, .details-toggle, .close-details-btn{
+.details-label:active{
+  box-shadow: 0 0 0;
+  transform: translateY(0.3cqi);
+}
+
+.client-card__address, .client-card__description, small, .details-toggle, .client-settings-btn{
   display: none;
 }
 
-.card--content h3 {
-  font-size: 1.5cqi;
+.card--content input{
+  border: none;
+  outline: none;
+  font-family: OpenSans;
+  width: 100%;
+  font-weight: 600;
   text-align: center;
+  border-radius: 0.5cqi;
+}
+
+.card--content input, .card--content textarea{
+    background-color: #c9c9c9;
+}
+
+.client-card:has(.edit-toggle:checked) .card--content input, .client-card:has(.edit-toggle:checked) .card--content textarea{
+    background-color: #ffffff;
+}
+
+.client-card__name{
+  font-size: 1.5cqi;
 }
 
 .client-card__phone, .client-card__email {
   font-size: 1.1cqi;
-  white-space: nowrap;
 }
-
-.card--content label{
-  cursor: pointer;
-  color: blue;
-  text-decoration: underline;
-  position: sticky;
-}
-
 /*-------------------------------- Clients Card Expanded-----------------------------*/
 
 .client-card__expanded{
@@ -285,29 +314,41 @@
   justify-content: space-between;
 }
 
-.client-card__expanded .close-details-btn{
+.client-settings-container{
+  display: flex;
+  gap: 1.5cqi;
+}
+
+.client-card__expanded .client-settings-btn{
   display: block;
   cursor: pointer;
   height: 2cqi;
   width: 2cqi;
+  border: none;
+  outline: none;
+  background-color: transparent;
 }
 
-.close-details-btn:hover{
+.client-settings-btn:hover{
   transform: scale(1.03);
 }
 
-.close-details-btn:active{
+.client-settings-btn:active{
   transform: scale(1);
 }
 
-.close-details-btn img{
+.client-settings-btn img{
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
 
-.client-card__expanded .card--content h3{
+.client-card__expanded .client-card__name{
   font-size: 1.7cqi;
+}
+
+.client-card__expanded input{
+  font-size: 1.5cqi;
 }
 
 .client-card__expanded .client-card--icon{
@@ -315,7 +356,7 @@
   height: 13cqi;
   margin: 0 auto;
 }
-.client-card__expanded .card--content p, .client-card__expanded .client-card__description, .client-card__expanded .client-card__address {
+.client-card__expanded .client-card__description, .client-card__expanded .client-card__address {
   display: block;
   font-size: 1.5cqi;
   white-space: nowrap;
@@ -324,7 +365,7 @@
 
 .client-card__expanded .card--content{
   flex-grow: 1;
-  gap: 0.2cqi;
+  gap: 0.5cqi;
   overflow-x: auto;
 }
 
@@ -342,7 +383,8 @@
   scrollbar-width: thin;
   scrollbar-color: #808080 transparent;
   padding: 0.1cqi;
-    min-height: 10cqi;
+  min-height: 9cqi;
+  font-family: inherit;
 }
 
 .client-card__address{
@@ -358,6 +400,7 @@
   scrollbar-color: #808080 transparent;
   padding: 0.1cqi;
   height: 2.8cqi;
+  font-family: inherit;
 }
 
 .client-card__expanded .created--date{
@@ -405,6 +448,7 @@
 
   .card--content{
     padding: 1cqi;
+    gap: 2cqi;
   }
 
   .client-card--header{
@@ -416,12 +460,12 @@
     justify-content: start;
   }
 
-  .card--content h3{
-    font-size: 3.6cqi;
+  .card--content .client-card__name {
+    font-size: 3.8cqi;
   }
 
   .client-card__phone, .client-card__email {
-    font-size: 3cqi;
+    font-size: 3.2cqi;
   }
 
   .details-label{
@@ -434,19 +478,22 @@
     padding: 2cqi;
     display: flex;
     align-items: center;
+    box-shadow: none;
   }
 
   .details-label:after{
     content: '+';
     color: white;
     font-size: 8cqi;
+  }
+  .client-card__expanded input{
+    font-size: 2cqi;
+  }
 } 
 
-}
+@media (max-width: 964px) and (min-width: 426px) {
 
-@media (max-width: 820px) and (min-width: 426px) {
-
-  .card--content h3 {
+  .card--content .client-card__name {
     font-size: 2.2cqi;
   }
 
@@ -460,7 +507,7 @@
   
 }
 
-@media (max-width: 820px) {
+@media (max-width: 964px) {
 
   /*------------------------------ Form Add Client responsive styles ------------------------------*/
   
@@ -521,13 +568,13 @@
     font-size: 2.8cqi;
   }
 
-  .client-card__expanded .close-details-btn{
+  .client-card__expanded .client-settings-btn{
     width: 6cqi;
     height: 6cqi;
   }
 
   .client-card__description{
-    min-height: 20cqi;
+    min-height: 35cqi;
   }
 
   .client-card__expanded .card--content{
@@ -540,11 +587,11 @@
     margin: 0 auto;
   }
 
-  .client-card__expanded .card--content h3{
+  .client-card__expanded .client-card__name{
     font-size: 5cqi;
   }
 
-  .client-card__expanded .card--content p, .client-card__expanded .client-card__description, .client-card__expanded .client-card__address {
+  .client-card__expanded input, .client-card__expanded .client-card__description, .client-card__expanded .client-card__address {
     font-size: 4cqi;
   }
 

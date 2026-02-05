@@ -1,0 +1,695 @@
+/*==================================== Inventory Styles ====================================*/
+main > *{
+    font-family: 'Open Sans', sans-serif;
+}
+
+button{
+    cursor: pointer;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+label{
+    cursor: pointer;
+}
+/*----------------------------------------- Main header styles-------------------------------------------*/
+.wd-inventory__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #808080;
+    height: max(45px, 4cqi);
+    padding-inline: 3cqi;
+}
+
+.search-item--box{
+    flex-grow: 1;
+}
+
+#search-input{
+  width: 100%;
+  border-radius: 3cqi;
+  border: none;
+  padding: 0.5cqi;
+  font-size: 1cqi;
+  outline: none;
+  font-family: OpenSans;
+  font-weight: 600;
+  word-spacing: 0.1cqi;
+}
+
+.wd-inventory__header-actions{
+    display: flex;
+    align-items: center;
+    gap: 2cqi;
+    padding-inline: 2cqi;
+}
+
+.wd-inventory__header .btn{
+    width: 3.5cqi;
+    height: 3.5cqi;
+}
+
+.wd-inventory__header .btn:hover{
+    transform: scale(1.06);
+}
+
+.wd-inventory__header .btn img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+.wd-inventory__header:has(#add-item-checkbox:checked) .add-item-form__container {
+    display: flex;
+}
+
+.wd-inventory:has(.open-card-checkbox:checked)::after{
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #00000080;
+    filter: blur(4px);
+    z-index: 50;
+}
+
+/*------------------------------------ Main body styles------------------------------------*/
+
+.wd-inventory__content {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, max(200px, (100% - 4cqi) / 5)), 1fr) );
+  gap: 2cqi;
+  padding: 2cqi; 
+}
+
+.empty-message{
+    font-family: OpenSans, sans-serif;
+    font-size: 2cqi;
+    font-weight: 600;
+    color: #545454;
+    text-align: center;
+    margin-top: 5cqi;
+}
+
+.inventory-item-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 1cqi;
+    overflow: hidden;
+    background-color: #c7c7c7;
+}
+
+.inventory-item-card--header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: #e7e7e7;
+    justify-content: center;
+}
+
+.inventory-item-card--image{
+    height: 100%;
+    width: 100%;
+    padding: 0.5cqi;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inventory-item-card--image img{
+    width: 12cqi;
+    height: 12cqi;
+    object-fit: contain;
+}
+
+.inventory-item-card--settings{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0.3cqi 0.5cqi;
+    align-items: center;
+    background-color: #c7c7c7;
+}
+
+.inventory-item-card--settings img{
+    width: 2.8cqi;
+    height: 2.8cqi;
+    object-fit: contain;
+}
+
+.inventory-item-card--settings > *:hover{
+    filter: brightness(0.8);
+}
+
+.item-info-form{
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-areas:
+    "name name"
+    "text-s stock"
+    "text-p price"
+    "description description";
+    padding: 0.5cqi;
+}
+
+.item-info-form > *{
+    border: none;
+    outline: none;
+    font-family: OpenSans;
+    font-size: 1.3cqi;
+    background-color: #e4e4e4;
+    color: #141414;
+    padding: 0.2cqi;
+}
+
+.item-card--name{
+    grid-area: name;
+    font-weight: bold;
+    font-size: 1.8cqi;
+    text-align: center;
+    width: 100%;
+    border-radius: 0.7cqi;
+}
+
+.item-card--stock-text{
+    grid-area: text-s;
+    font-weight: bold;
+    margin-block: 0.8cqi;
+    border-radius: 0.7cqi 0 0 0.7cqi;
+    text-align: center;
+    background-color: #b9b9b9;
+}
+
+.item-card--stock{
+    grid-area: stock;
+    width: 100%;
+    font-weight: bold;
+    margin-block: 0.8cqi;
+    border-radius: 0 0.7cqi 0.7cqi 0;
+    
+}
+
+.item-card--price-text{
+    grid-area: text-p;
+    font-weight: bold;
+    background-color: #b9b9b9;
+    text-align: center;
+    border-radius: 0.7cqi 0 0 0.7cqi;
+}
+
+.item-card--price{
+    grid-area: price;
+    width: 100%;
+    font-weight: bold;
+    border-radius: 0 0.7cqi 0.7cqi 0;
+}
+
+.item-card--description{
+    border-radius: 0.7cqi;
+    margin-top: 0.8cqi;
+    grid-area: description;
+    width: 100%;
+    height: 5cqi;
+    resize: none;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: #a0a0a0 #e4e4e4;
+}
+
+.inventory-item-card:has(.edit-item-checkbox:checked) .inventory-item--edit-btn{
+    filter: brightness(0.8);
+}
+
+.inventory-item-card:has(.edit-item-checkbox:checked) .item-card--price{
+    background-color: #ffffff;
+}
+
+.inventory-item-card:has(.edit-item-checkbox:checked) .item-card--stock{
+    background-color: #ffffff;
+}
+
+.inventory-item-card:has(.edit-item-checkbox:checked) .item-card--description{
+    background-color: #ffffff;
+}
+
+/*---------------------------- Add Item Form styles------------------------------------*/
+
+.add-item-form__container{
+    height: 90dvh;
+    width: 50dvw;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    border-radius: 1cqi;
+    overflow: hidden;
+}
+
+.item-form__header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1cqi;
+    background-color: #b0b0b0;
+    color: #e4e4e4;
+    font-size: 1.5cqi;
+}
+
+.add-item-form{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 1cqi;
+    width: 100%;
+    padding: 2cqi;
+    background-color: #ffffff;
+}
+
+.add-item-form input{
+    width: 90%;
+    margin: auto;
+    font-size: 1.5cqi;
+    border: none;
+    outline: none;
+    padding: 0.5cqi;
+    border-bottom: 0.5cqi solid #797979;
+    font-family: OpenSans;
+}
+
+.add-item-form textarea{
+    width: 90%;
+    margin: auto;
+    font-size: 1.5cqi;
+    outline: none;
+    padding: 0.5cqi;
+    font-family: OpenSans;
+    resize: none;
+    height: 10cqi;
+    border: 0.3cqi solid #797979;
+    border-radius: 0.8cqi;
+}
+
+.add-item-form--submit-btn{
+    width: 40%;
+    margin: auto;
+    height: 4cqi;
+    font-size: 2cqi;
+    font-weight: bold;
+    background-color: #19c219;
+    box-shadow: 0 0.3cqi 0 #136b13;
+    color: #ffffff;
+    border-radius: 1cqi;
+}
+
+.add-item-form--submit-btn:hover{
+    transform: translateY(-0.2cqi);
+    box-shadow: 0 0.5cqi 0 #136b13;
+}
+
+.add-item-form--submit-btn:active{
+    box-shadow: none;
+    transform: translateY(0.3cqi);
+}
+/*------------------------------------ History styles------------------------------------*/
+.wd-inventory:has(.history-checkbox:checked) .history-card__container {
+    display: flex;
+}
+
+.history-card__container {
+    position: fixed;
+    display: none;
+    flex-direction: column;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 45dvw;
+    height: 90dvh;
+    z-index: 100;
+    border-radius: 2cqi;
+    overflow: hidden;
+}
+
+.history-card__header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1cqi;
+    background-color: #b0b0b0;
+}
+
+.history-card__header h2{
+    font-family: OpenSans, sans-serif;
+    font-size: 2cqi;
+    font-weight: 600;
+    color: #e4e4e4;
+}
+
+.wd-btn--close-form{
+    width: 3cqi;
+    height: 3cqi;
+}
+
+.wd-btn--close-form img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.wd-btn--close-form:hover{
+    filter: brightness(0.8);
+}
+
+.history-content{
+    width: 100%;
+    padding: 0.8cqi;
+    overflow-x: hidden;
+    overflow-y: auto;
+    flex-grow: 1;
+    gap: 0.5cqi;
+    background-color: #ffffff;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: min-content;
+    scrollbar-width: thin;
+    scrollbar-color: #a0a0a0 #e4e4e4;
+}
+
+.history-item-card{
+    width: 100%;
+    height: min-content;
+    background-color: #e9e9e9;
+    border-radius: 1cqi;
+    overflow-y: hidden;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #a0a0a0 #e4e4e4;
+}
+
+.history-item-card--info{
+    font-family: OpenSans;
+    font-size: 1.2cqi;
+    padding: 1cqi;
+}
+
+
+/*------------------------------------ Sell item form styles------------------------------------*/
+.inventory-item-card:has(.sell-item-checkbox:checked) .sell-item-form{
+    display: flex;
+}
+
+.sell-item-form{
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    z-index: 100;
+    border-radius: 1cqi;
+    overflow: hidden;
+    height: 65dvh;
+    width: 50dvw;
+}
+
+.sell-item-form__header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1cqi;
+    background-color: #b0b0b0;
+}
+
+.sell-item-form__header h4{
+    font-family: OpenSans, sans-serif;
+    font-size: 2cqi;
+    font-weight: 600;
+    color: #ebebeb;
+}
+
+.sell-item-form input{
+    width: 90%;
+    margin: auto;
+    height: 5cqi;
+    font-size: 3cqi;
+    border: none;
+    outline: none;
+    border-bottom: 0.5cqi solid #797979;
+}
+
+.sell-item-form button{
+    width: 40%;
+    margin: auto;
+    height: 4cqi;
+    font-size: 2cqi;
+    font-weight: bold;
+    background-color: #db0f0f;
+    box-shadow: 0 0.3cqi 0 #6b1313;
+    color: #ffffff;
+    border-radius: 1cqi;
+}
+
+.sell-item-form button:hover{
+    transform: translateY(-0.2cqi);
+    box-shadow: 0 0.5cqi 0 #6b1313;
+}
+
+.sell-item-form button:active{
+    box-shadow: none;
+    transform: translateY(0.3cqi);
+}
+
+/*------------------------------- Responsive styles-------------------------*/
+
+@media (max-width: 964px){
+
+/*-------------------------------- Header styles------------------------------*/
+    .wd-inventory__header{
+        height: 15cqi;
+    }
+
+    #search-input{
+    padding: 1cqi;
+    font-size: 4cqi;
+    }
+
+    .wd-inventory__header-actions{
+    gap: 5cqi;
+    padding-inline: 7cqi;
+    }
+
+    .wd-inventory__header .btn{
+        width: 8cqi;
+        height: 8cqi;
+    }
+
+    /*----------------------------------- Add item form---------------------------------*/
+
+    .item-form__header{
+    padding: 3cqi;
+    font-size: 3.5cqi;
+    }
+
+        .add-item-form input{
+        font-size: 5cqi;
+        border: none;
+        outline: none;
+        padding: 0.5cqi;
+        border-bottom: 0.5cqi solid #797979;
+        font-family: OpenSans;
+    }
+
+    .wd-btn--close-form{
+    width: 6cqi;
+    height: 6cqi;
+    }
+
+    .add-item-form textarea{
+        font-size: 5cqi;
+        height: 20cqi;
+    }
+
+    .add-item-form--submit-btn{
+        width: 50%;
+        height: 10cqi;
+        font-size: 5cqi;
+        box-shadow: 0 0.8cqi 0 #136b13;
+    }
+
+    .add-item-form--submit-btn:hover{
+        box-shadow: 0 0.5cqi 0 #136b13;
+    }
+
+    .add-item-form--submit-btn:active{
+        transform: translateY(0.5cqi);
+    }
+
+    /*------------------------ Sales history------------------------------------*/
+
+    .history-card__header{
+        padding: 3cqi;
+    }
+
+    .history-card__header h2{
+        font-size: 5cqi;
+    }
+
+    .history-item-card--info{
+        font-size: 3.2cqi;
+        padding: 2cqi;
+    }
+
+    .history-content{
+        padding: 2cqi;
+        gap: 3cqi;
+    }
+
+    /*------------------------- inventory content--------------------------------*/
+
+    .wd-inventory__content{
+        gap: 4cqi;
+        padding: 4cqi;
+    }
+
+    .inventory-item-card--image{
+        padding: 1cqi;
+    }
+
+    .inventory-item-card--image img{
+        width: 15cqi;
+        height: 15cqi;
+    }
+
+    .inventory-item-card--settings{
+        padding: 0.6cqi 1cqi;
+    }
+
+    .inventory-item-card--settings img{
+        width: 4cqi;
+        height: 4cqi;
+    }
+
+    .item-info-form{
+        padding: 1cqi;
+    }
+
+    .item-info-form > *{
+        font-size: 2cqi;
+        padding: 0.5cqi;
+    }
+
+    .item-card--name{
+        font-size: 2cqi;
+    }
+
+    .item-card--stock-text{
+        margin-block: 1cqi;
+        border-radius: 0.7cqi 0 0 0.7cqi;
+        text-align: center;
+        background-color: #b9b9b9;
+    }
+
+    .item-card--stock{
+        margin-block: 1cqi;
+        border-radius: 0 0.7cqi 0.7cqi 0;
+    }
+
+    .item-card--description{
+        border-radius: 0.7cqi;
+        margin-top: 1cqi;
+        height: 10cqi;
+    }
+
+    /*------------------------- Sell item form--------------------------------*/
+
+    .sell-item-form__header{
+        padding: 3cqi;
+    }
+
+    .sell-item-form__header h4{
+        font-size: 5cqi;
+    }
+
+    .sell-item-form input{
+        height: 10cqi;
+        font-size: 6cqi;
+        border-bottom: 0.8cqi solid #797979;
+    }
+
+    .sell-item-form button{
+        width: 60%;
+        height: 10cqi;
+        font-size: 5cqi;
+        box-shadow: 0 0.8cqi 0 #6b1313;
+    }
+}
+
+@media (max-width: 500px){
+
+    .wd-inventory__content{
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, max(200px, (100% - 2cqi) / 2)), 1fr) );
+    }
+
+        .inventory-item-card--image{
+        padding: 2cqi;
+    }
+
+    .inventory-item-card--image img{
+        width: 16cqi;
+        height: 16cqi;
+    }
+
+    .inventory-item-card--settings{
+        padding: 1cqi 8cqi;
+    }
+
+    .inventory-item-card--settings img{
+        width: 7.5cqi;
+        height: 7.5cqi;
+    }
+
+    .item-info-form{
+        padding: 1.5cqi;
+    }
+
+    .item-info-form > *{
+        font-size: 4cqi;
+    }
+
+    .item-card--name{
+        font-size: 4cqi;
+    }
+
+    .item-card--stock-text{
+        margin-block: 2cqi;
+    }
+
+    .item-card--stock{
+        margin-block: 2cqi;
+    }
+
+    .item-card--description{
+        margin-top: 2cqi;
+        height: 15cqi;
+    }
+
+
+}

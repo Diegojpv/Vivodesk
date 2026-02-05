@@ -17,6 +17,7 @@ The goal is to learn about servers, databases, and web development while providi
     - `navbar.php` → Navigation structure on the workdesk
     - `profile.php` → Structure of the section to modify the user
     - `welcome.php` → Welcome page to the workdesk
+    - `inventory.php` → File containing the inventory system structure
   - **assets/**
     - **css/**
       - `clients.css` → Styles for the customer section 
@@ -25,17 +26,26 @@ The goal is to learn about servers, databases, and web development while providi
       - `navbar.css` → Styles for navigating in the workdesk
       - `profile.css` → Styles for user personalization page
       - `welcome.css` → Styles for the welcome page
+      - `inventory.css` → Styles for the inventory page
     - **js/**
       - `index.js` → Logic for visual effects and home page buttons.
       -`clients.js` → Logic for customer management and section features
       -`form.js` → Logic for user registration forms
       -`profile.js` → Logic for updating user data
+      -`inventory.js` → Logic for sending forms and editing inventory data
     - **fonts/** → Fonts used in the project.
     - **images/** → Graphic resources for the home page.
 
 - **src/**
   - **clients/**
     - `addClient.php` → Add clients to the database 
+    - `editClient.php` → Edit customer data in the database
+    -`deleteClient.php` → Delete the customer from the database
+  - **inventory/**
+    - `addItem.php` → Add products to the database
+    - `deleteItem.php` → Delete the products from the database
+    - `editItem.php` → Edit products data in the database
+    - `sellItem.php` →  Add the sales data to the sales table in the database.
   - `db.php` → Database connection using PDO (MySQL).
   - `logout.php` → Logout logic.
   - `verification.php` → Access verification for the dashboard (This file has been modified to improve security.).
@@ -61,23 +71,25 @@ The goal is to learn about servers, databases, and web development while providi
 - Functional dashboard for the work desktop
 - User update system implemented (change name, delete user, assign roles and data)
 - Customer system implemented (add customers, assign information to each customer)
+- Complete and functional inventory system
+- Sales records for your products
 
 ---
 
 ## 🔮 Upcoming updates
 
-- Inventory system.  
+- Services system.  
 - Service assignment.  
 - Improvements in security and scalability.
 -  Improvements in the visual section and better responsive design
-- Modification and deletion of customer data for better management
 - Notifications
 
 ---
 
 ## 🔄 Versions 
 
-- Vivodesk V0.4 (Current)
+- Vivodesk V0.7 (Current)
+- Vivodesk V0.4 
 - Vivodesk V0.1
 
 ---

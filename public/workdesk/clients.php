@@ -51,23 +51,36 @@
                     <?php foreach ($clients as $c): ?> 
                         <div class="client-card"> 
                             <input type="checkbox" id="details-toggle-<?= htmlspecialchars($c['client_id']) ?>" class="details-toggle">
+                            <input type="checkbox" id="edit-toggle-<?= htmlspecialchars($c['client_id']) ?>" class="edit-toggle">
                             <header class="client-card--header">
                                 <div class="client-card--status">
-                                    <label for="details-toggle-<?= htmlspecialchars($c['client_id']) ?>" class="close-details-btn">
-                                        <img src="../assets/img/close.webp" alt="Close Details">
-                                    </label>
+                                    <div class="client-settings-container">
+                                        <label for="details-toggle-<?= htmlspecialchars($c['client_id']) ?>" class="client-settings-btn">
+                                            <img src="../assets/img/close.webp" alt="Close Details">
+                                        </label>
+                                        <label for="edit-toggle-<?= htmlspecialchars($c['client_id']) ?>" class="client-settings-btn">
+                                            <img src="../assets/img/edit.webp" alt="Edit Client">
+                                        </label>
+                                        <button type="submit" form="edit-client-form-<?= htmlspecialchars($c['client_id'])?>" class="client-settings-btn save-btn">
+                                            <img src="../assets/img/save.webp" alt="Save Client">
+                                        </button>
+                                        <button type="button" class="client-settings-btn delete-btn" onclick="deleteClient(<?= htmlspecialchars($c['client_id']) ?>)">
+                                            <img src="../assets/img/delete.webp" alt="Delete Client">
+                                        </button>
+                                    </div>
                                     <p>Active 🟢</p>
                                 </div>
                                 <img src="../assets/img/client-icon.webp" alt="Client Icon" class="client-card--icon">
                             </header>
-                            <div class="card--content">
-                                <h3><?= htmlspecialchars($c['name']) ?></h3> 
-                                <textarea class="client-card__address"><?= htmlspecialchars($c['address'])?></textarea>
-                                <p class="client-card__phone"><strong>Phone:</strong> <?= htmlspecialchars($c['phone']) ?></p>     
-                                <p class="client-card__email"><strong>Email:</strong> <?= htmlspecialchars($c['email']) ?></p> 
-                                <textarea class="client-card__description"><?= htmlspecialchars($c['description'])?></textarea> 
-                            <small class="created--date">Created: <?= htmlspecialchars($c['creation_date']) ?></small> 
-                            </div>
+                            <form class="card--content" id="edit-client-form-<?= htmlspecialchars($c['client_id'])?>">
+                                <input type="hidden" name="client_id" value="<?= htmlspecialchars($c['client_id']) ?>">
+                                <input type="text" value="<?= htmlspecialchars($c['name']) ?>" class="client-card__name" readonly name="clientName"> 
+                                <textarea class="client-card__address" readonly name="clientAddress"><?= htmlspecialchars($c['address'])?></textarea>
+                                <input type="tel" class="client-card__phone" value="<?= htmlspecialchars($c['phone']) ?>" readonly name="clientPhone">     
+                                <input type="email" class="client-card__email" value="<?= htmlspecialchars($c['email']) ?>" readonly name="clientEmail"> 
+                                <textarea class="client-card__description" readonly name="description"><?= htmlspecialchars($c['description'])?></textarea> 
+                                <small class="created--date">Created: <?= htmlspecialchars($c['creation_date']) ?></small> 
+                            </form>
                             <label for="details-toggle-<?= htmlspecialchars($c['client_id']) ?>" class="details-label"> More details</label>
                         </div> 
                     <?php endforeach; ?> 

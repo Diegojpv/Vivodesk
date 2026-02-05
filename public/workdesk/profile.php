@@ -26,9 +26,18 @@
                     <input type="text" name="role" placeholder="Role" value="<?php echo htmlspecialchars($role)?>" id="role">
                     <input type="text" name="business" placeholder="Business Name" value="<?php echo htmlspecialchars($business)?>" id="business">
                     <div class="profile-card__settings">
-                        <input type="button" value="Delete User" id="delete" class="delete-account-btn">
-                        <input type="button" value="Logout" id="logout" class="logout-btn">
-                        <button type="submit" id="save">Save Changes</button>
+                        <button id="delete" class="delete-account-btn"> 
+                            <p>Delete User</p>
+                            <img src="../assets/img/x.webp" alt="">
+                        </button>
+                        <button id="logout" class="logout-btn">
+                            <p>Logout</p>
+                            <img src="../assets/img/logout-small.webp" alt="">
+                        </button>
+                        <button type="submit" id="save" class="save-changes-btn">
+                            <p>Save Changes</p>
+                            <img src="../assets/img/check.webp" alt="">
+                        </button>
                     </div>
                 </form>
             </div>

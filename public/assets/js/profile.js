@@ -48,14 +48,14 @@ save.addEventListener('click', (event) => {
         .then(response => response.text())
         .then(data => { // We handle the server response accordingly.
             if (data.trim() == "update-success") {
-                alert('Datos guardados con exito')
+                alert('Data successfully saved')
                 window.location.reload()
             } else if (data.trim() == "update-error"){
-                alert('Error al guardar datos')
+                alert('Error saving data')
             } else if (data.trim() == "invalid-request"){
-                alert('Solicitud invalida')
+                alert('Invalid request')
             } else if (data.trim() == "user-exists"){
-                alert('El nombre de usuario ya existe')
+                alert('Username already exists')
             } else if (data.trim().startsWith("Error: ")){
                 alert(data.trim());
             }

@@ -1,7 +1,7 @@
 /*============================= Profile Section Styles =============================*/
 
 .profile-card{
-    width: 80%;
+    width: 90%;
     margin: 2cqi auto;
     padding: 2cqi;
     background-color: #d9d9d9;
@@ -20,6 +20,14 @@
 
 .profile-card__img{
     flex-shrink: 0;
+    width: 14cqi;
+    height: 14cqi;
+}
+
+.profile-card__img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .profile-card__info{
@@ -27,6 +35,135 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 1cqi;
+    gap: 1.5cqi;
 }
 
+.profile-card__info > *{
+    outline: none;
+}
+
+#updateUser{
+    font-size: 2.5cqi;
+    background-color: #f2f2f2;
+    border: none;
+    border-radius: 1cqi;
+    padding: 0.6cqi 1cqi;
+    color: #545454;
+}
+
+#role, #business{
+    font-size: 1.8cqi;
+    padding: 0.2cqi;
+    background-color: transparent;
+    border: none;
+    border-bottom: 0.4cqi solid #737373;
+    color: #545454;
+}
+
+.profile-card__settings{
+    display: flex;
+    align-items: center;
+    gap: 1cqi;
+    width: min-content;
+    margin: auto;
+}
+
+button{
+    cursor: pointer;
+    border: none;
+    display: flex;
+    width: 12cqi;
+    font-size: 1.2cqi;
+    color: #ffffff;
+    padding: .5cqi;
+    gap: 0.2cqi;
+    border-radius: .5cqi;
+    font-weight: 600;
+    align-items: center;
+}
+
+button p{
+    flex-grow: 1;
+    white-space: nowrap;
+}
+
+button img{
+    flex-shrink: 0;
+    width: 1.4cqi;
+    height: 1.4cqi;
+}
+
+button:active{
+    transform: translateY(.2cqi);
+    box-shadow: none;
+}
+
+.delete-account-btn{
+    background-color: #ff3131;
+    box-shadow: 0 .3cqi 0 #9d2c2c;
+}
+
+.logout-btn{
+    background-color: #4d94ff;
+    box-shadow: 0 .3cqi 0 #3366cc;
+}
+
+.save-changes-btn{
+    background-color: #33cc33;
+    box-shadow: 0 .3cqi 0 #248f24;
+}
+
+
+/*------------------------------- Profile responsive styles -------------------------------*/
+
+@media (max-width: 964px){
+    .profile-card{
+        width: 90%;
+        padding: 2cqi;
+    }
+
+    .profile-card__content{
+        flex-direction: column;
+        gap: 5cqi;
+    }
+
+    .profile-card__img{
+        width: 26cqi;
+        height: 26cqi;
+    }
+
+    .profile-card__info{
+        gap: 5cqi;
+    }
+
+    #updateUser{
+        font-size: 6cqi;
+    }
+
+    #role, #business{
+        font-size: 5cqi;
+    }
+
+    button{
+        width: 28cqi;
+        font-size: 3cqi;
+        padding: 1.5cqi;
+    }
+
+    button img{
+        width: 4cqi;
+        height: 4cqi;
+    }
+
+    .delete-account-btn{
+        box-shadow: 0 1cqi 0 #9d2c2c;
+    }
+
+    .logout-btn{
+        box-shadow: 0 1cqi 0 #3366cc;
+    }
+
+    .save-changes-btn{
+        box-shadow: 0 1cqi 0 #248f24;
+    }
+}

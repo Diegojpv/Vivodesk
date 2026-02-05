@@ -23,7 +23,7 @@
                     </a>
                 </li>
                 <li class="wd-navbar__link">
-                    <a href="#">
+                    <a href="inventory.php">
                         <img src="../assets/img/inventory.webp" alt="">
                         <p>Inventory</p>
                     </a>

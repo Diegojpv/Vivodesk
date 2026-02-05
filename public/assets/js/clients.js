@@ -55,6 +55,9 @@ detailToggles.forEach(toggle => {
             clientCard.classList.add('client-card__expanded');
         } else {
             clientCard.classList.remove('client-card__expanded');
+            editToggles.forEach(editToggle => {
+                editToggle.checked = false;
+            })
         }
     });
 });
@@ -69,7 +72,7 @@ inputSearch.addEventListener('keyup', function(event) {
     const searchTerm = event.target.value.toLowerCase();
     // We go through all the client cards and check if the name contains the search term.
     clientCards.forEach(function(card) {
-        const clientName = card.querySelector('.card--content h3').textContent.toLowerCase();
+        const clientName = card.querySelector('.card--content input[name="clientName"]').value.toLowerCase();
         // If it contains it, we show the card; if not, we hide it.
         if (clientName.includes(searchTerm)) {
             card.style.display = 'flex'; 
@@ -99,3 +102,86 @@ formAddressTextarea.addEventListener('keydown', function(event) {
     }
 });
 
+// ------------------------------------- Edit client functionality ----------------------------------- //
+const editToggles = document.querySelectorAll('.edit-toggle');
+const editClientInputs = document.querySelectorAll('.card--content input, .card--content textarea');
+
+// We assign a function to the checkbox that enables the input fields for editing.
+
+editToggles.forEach(toggle => {
+    toggle.addEventListener('change', function(event) {
+    if (this.checked) {
+        editClientInputs.forEach(input => input.readOnly = false);
+    } else {
+        editClientInputs.forEach(input => input.readOnly = true);
+    }
+});
+});
+
+// We handle the form submission to save the edited client data.
+const editPhone = document.querySelectorAll('input[name="clientPhone"]');
+ const editClientForm = document.querySelectorAll('.card--content');
+
+    editPhone.forEach(input => {
+        input.addEventListener('input', (event) => {
+        event.target.value = event.target.value.replace(/[a-zA-Z]/g, '');
+    });
+});
+
+editClientForm.forEach(form => {
+    form.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const inputEditName = form.querySelector('.client-card__name').value;
+    const inputEditPhone = form.querySelector('.client-card__phone').value;
+    const inputEditEmail = form.querySelector('.client-card__email').value;
+
+    if (inputEditPhone.length > 20 ) {
+        alert('Please enter a valid phone number with fewer than 20 digits.');
+        return;
+    }
+
+    if (inputEditEmail.length > 100 ) {
+        alert('Please enter a valid email address with fewer than 100 characters.');
+        return;
+    }
+
+    if (inputEditName.length > 80 ) {
+        alert('Please enter a valid name with fewer than 80 characters.');
+        return;
+    }
+
+    const formData = new FormData(form);
+    formData.append('editClient', 'true');
+    fetch('../../src/clients/editClient.php', {
+        method: 'POST',
+        body: formData
+    }) .then (response => response.text())
+        .then (data => {
+        if (data === 'success-client-updated') {
+            alert('Client updated successfully!');
+            window.location.reload();
+        } else {
+            alert('Error updating client: ' + data);
+        }
+    });
+});
+});
+
+// ------------------------------------- Delete client functionality ----------------------------------- //
+function deleteClient(clientId) {
+    if (confirm('Are you sure you want to delete this client? This action cannot be undone.')) {
+        let deleteUrl = `../../src/clients/deleteClient.php?clientId=${clientId}`;
+        fetch(deleteUrl, {
+            method: 'GET'
+    }) .then (response => response.text())
+        .then (data => {
+        if (data === 'success-client-deleted') {
+            alert('Client deleted successfully!');
+            window.location.reload();
+        } else {
+            alert('Error deleting client: ' + data);
+        }
+    });
+}
+}
